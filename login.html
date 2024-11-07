@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Pet Prime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="img/_logo.png"  alt="Logo Pet Prime">
+        </div>
+        <nav class="nav-options">
+            <a href="home.html">Início</a>
+            <a href="login.html">Agendamentos</a>
+            <a href="servicos.html">Serviços</a>
+        </nav>
+    </header>
+   
+
+    <main>
+        <div class="login-box">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <label for="login">Login</label>
+                <input type="text" id="login" name="login" required>
+                
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+                
+                <button type="submit">Entrar</button>
+            </form>
+            <button id="registerBtn">Cadastrar</button>
+        </div>
+    </main>
+
+    <script>
+        // Verificação de login
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let login = document.getElementById('login').value;
+            let senha = document.getElementById('senha').value;
+
+            let storedLogin = localStorage.getItem('login');
+            let storedSenha = localStorage.getItem('senha');
+
+            console.log('Tentativa de login:', login);
+
+            if (login === storedLogin && senha === storedSenha) {
+                console.log('Login bem-sucedido!');
+                alert('Login realizado com sucesso!');
+                window.location.href = 'agendamentos.html';
+            } else {
+                console.log('Falha no login. Login ou senha incorretos.');
+                alert('Login ou senha incorretos.');
+            }
+        });
+
+        // Redirecionamento para cadastro
+        document.getElementById('registerBtn').addEventListener('click', function () {
+            console.log('Redirecionando para a página de cadastro.');
+            window.location.href = 'cadastro.html'; // Redireciona para a página de cadastro
+        });
+    </script>
+        <footer class="footer">
+            <div class="footer-logo">
+                <img src="img/_logo.png" alt="Logo Pet Prime">
+            </div>
+            <hr>
+            <div class="footer-options">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><img src="img/face.png" alt="Facebook"></a>
+                <a href="#"><img src="img/zap.png" alt="WhatsApp"></a>
+                <a href="#"><img src="img/insta.png" alt="Instagram"></a>
+            </div>
+        </footer>
+</body>
+</html>
