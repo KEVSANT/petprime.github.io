@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- Kevin Santos -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Pet Prime</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/icon.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo Pet Prime">
+        </div>
+        <nav class="nav-options">
+            <a href="index.html">Início</a>
+            <a href="login.html">Agendamentos</a>
+            <a href="servicos.html">Serviços</a>
+        </nav>
+    </header>
+
+    <!-- Seção de Cadastro -->
+    <main>
+        <div class="login-box">
+            <h1>Cadastrar</h1>
+            <form id="registerForm">
+                <label for="login">Login</label>
+                <input type="text" id="login" name="login" required>
+
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+            <button id="backToLogin">Voltar ao Login</button>
+        </div>
+    </main>
+
+    <script>
+        // Processo de cadastro
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let login = document.getElementById('login').value;
+            let senha = document.getElementById('senha').value;
+
+            if (login && senha) {
+                console.log('Realizando cadastro:');
+                console.log('Login cadastrado:', login);
+                localStorage.setItem('login', login);
+                localStorage.setItem('senha', senha);
+                alert('Cadastro realizado com sucesso! Redirecionando para a tela de login.');
+                console.log('Cadastro concluído. Redirecionando para o login.');
+                window.location.href = 'login.html'; // Redireciona para a página de login
+            } else {
+                console.log('Cadastro falhou. Campos vazios.');
+                alert('É necessário preencher todos os campos.');
+            }
+        });
+
+        // Redirecionamento para a página de login
+        document.getElementById('backToLogin').addEventListener('click', function () {
+            console.log('Redirecionando de volta para a tela de login.');
+            window.location.href = 'login.html'; // Redireciona para a página de login
+        });
+    </script>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="Logo Pet Prime">
+        </div>
+        <hr>
+        <div class="footer-options">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+            <a href="#">Contato</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="img/whatsapp.png" alt="WhatsApp"></a>
+            <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
